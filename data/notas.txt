@@ -1,0 +1,46 @@
+tarea 3
+
+
+t
+
+
+ablas = senate at a glance 
+
+
+list loyal
+2 nros de voto por partido 
+porcentaje total votes % VOTES POR PARTY 
+
+
+senate
+1  total de representantes
+
+nros de representantes % 
+
+
+
+
+3
+
+
+
+attendence  
+
+
+nro de votos por o+aprtido  
+
+
+a los dos html +attendans (+2)+ loyalti(+2)
+
+
+loyalty (votes whit )
+
+missed votes  /100 
+
+
+sumar representantes 
+
+sumar votos  
+
+
+

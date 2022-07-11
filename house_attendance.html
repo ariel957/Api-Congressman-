@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <title>Home</title>
+</head>
+
+<body id="house" id="Filtros" class="row m-5  container position-absolute fst-italic">
+  <div class="row gap-3">
+    <h2 class="col text-start pb-3 fs-2 ">
+      Data insight group
+    </h2>
+    <h3 class="col pt-3 fs-5 text-end text-primary">
+      info@datainsightgroup.net
+    </h3>
+  </div>
+  <nav class="navbar navbar-expand-lg border bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+        aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Congress 113
+            </a>
+            <ul class="dropdown-menu dropdown-border bg-light" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li> <a class="dropdown-item" href="./house.html">House</a></li>
+              <li> <a class="dropdown-item" href="./senate.html">Senate</a></li>
+            </ul>
+          </li>
+          <div class="container-fluid text-start">
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Attendance
+                  </a>
+                  <ul class="dropdown-menu dropdown-border bg-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li> <a class="dropdown-item" href="./house_attendance.html">House</a></li>
+                    <li> <a class="dropdown-item" href="./senate_atendance.html">Senate</a></li>
+                  </ul>
+                </li>
+                <div class="container-fluid text-start">
+                  <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Party Loyalty
+                        </a>
+                        <ul class="dropdown-menu dropdown-border bg-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                          <li> <a class="dropdown-item" href="./house_loyalty.html">House</a></li>
+                          <li> <a class="dropdown-item" href="./senate_loyalty.html">Senate</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+  </nav>
+  <div>
+    </ul>
+  </div>
+  </div>
+  </nav>
+  <div>
+    <div id="app">
+      <main id="attendance">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-6">
+              <h3>Attendance</h3>
+              <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each
+                house. Representatives and senators rarely force the presence of a quorum by demanding quorum
+                calls; thus, in most cases, debates continue even if a majority is not present.</p>
+
+              <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator
+                stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for
+                the most formal matters, as a roll-call of all 435 representatives takes quite some time;
+                normally, members vote by electronic device. In the case of a tie, the motion in question fails.
+                In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+            </div>
+
+
+            <div class="col-6">
+              <h3>House at a Glance</h3>
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>party</th>
+                    <th>No.Of Reps</th>
+                    <th>%votes w/Party</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Republicans</td>
+                    <td>{{contadorR}}</td>
+                    <td>{{resultadoR}}%</td>
+                  </tr>
+                  <tr>
+                    <td>Democratic</td>
+                    <td>{{contadorD}}</td>
+                    <td>{{resultadosD}}%</td>
+                  </tr>
+                  <tr>
+                    <td>Independent</td>
+                    <td>{{contadorID}}</td>
+                    <td>{{resultadosID}}%</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>{{miembrosTotal}}</td>
+                    <td>{{Math.floor(porcentajeTotal / miembrosTotal)}}%</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+
+            <div class="col-6">
+              <h4>Least Engaged (Bottom 10% Attendance)</h4>
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>No.Missed Votes</th>
+                    <th>Missed%</th>
+                  </tr>
+                </thead>
+                <tbody id="tablaMenorCompromiso">
+                  <tr v-for="member in arrayCortadoMenor">
+                    <td><a v-bind:href=member.url target="_blank">{{member.first_name}}
+                      {{member.middle_name ?member.middle_name :""}} {{member.last_name}}</a></td>
+                    <td>{{member.missed_votes}}</td>
+                    <td>{{member.missed_votes_pct}}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <div class="col-6">
+              <h4>Most Engaged (Top 10% Attendance)</h4>
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>No.Missed Votes</th>
+                    <th>Missed%</th>
+                  </tr>
+                </thead>
+                <tbody id="tablaMayorCompromiso">
+                  <tr v-for="member in arrayCortadoMayor">
+                    <td><a v-bind:href=member.url target="_blank">{{member.first_name}}
+                      {{member.middle_name ?member.middle_name :""}} {{member.last_name}}</a></td>
+                    <td>{{member.missed_votes}}</td>
+                    <td>{{member.missed_votes_pct}}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+      <footer>
+        <div class=" mt-5 m-auto border bg-light text-center">
+          <p>
+            © 2021 Data insight group | All rigths reserved
+          <p>
+        </div>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+      <script src="https://unpkg.com/vue@3"></script>
+      <script src="./scripts/vue.js"></script>
+</body>
+
+</html>
